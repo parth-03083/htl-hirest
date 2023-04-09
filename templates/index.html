@@ -1,0 +1,229 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hirest</title>
+    <!-- CSS only -->
+<!-- <link rel="stylesheet" href="./css/style.css"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet">
+<script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static 'vendors/jQuery/jquery.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'vendors/bootstrap/css/bootstrap.min.css' %}">
+<script src="{% static 'vendors/bootstrap/js/bootstrap.min.js' %}"></script>
+
+
+</head>
+<body> 
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Hirest</a>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            {% comment %} <ul class="navbar-nav"> {% endcomment %}
+          </div>
+        <div class="profile">
+            {% if not request.user.is_authenticated %}
+                <a href="{% url 'login' %}"><button type="button" class="btn btn-success m-2">Login</button></a>
+                <a href="{% url 'register' %}"><button type="button" class="btn btn-secondary m-2">SignUp</button></a>
+            {% else %}
+            <div class="profile text-white d-flex align-items-center">
+                    <a class="nav-link text-white " href="#">Blog</a>
+
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+             <span class="text-white"><i class="bi bi-person-circle"></i> {{ request.user.username }} </span>  
+          </button>
+          <ul class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'jobs' %}">jobs</a>
+                          <li>
+                          
+                          <a class="dropdown-item" href="{% url 'jobs' %}">jobs</a>
+                          </li>
+                          <li>
+                          
+                          <a class="dropdown-item" href="{% url 'jobs' %}">jobs</a>
+                          </li>
+                          <li>
+                            <a href="{% url 'logout' %}"><button type="button" class="btn btn-secondary m-2">Logout</button></a>
+                          
+                          </li>
+          </ul>
+        </div>
+
+            </div>
+            {% endif %}
+        </div>
+        
+        </div>
+      </nav>
+
+    <main>
+        <div class="container-fluid">
+            <div class="row flex-nowrap ">
+                <div class="col-auto col-md-3  col-xl-2 px-sm-2 px-0 bg-light">
+                    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
+                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                            <li class="nav-item">
+                                <a href="/" class="nav-link align-middle py-2 px-0">
+                                    <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                                </a>
+                            </li>
+            
+                            <li>
+                                <a href="{% url 'my-profile' %}" class="nav-link py-2 px-0 align-middle">
+                                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">My Profile</span></a>
+                            </li>
+                        
+                        
+                            <li>
+                                <a href="{% url 'my-applied' %}" class="nav-link py-2 px-0 align-middle">
+                                    <i class="fs-4 bi bi-box-arrow-in-up"></i> <span class="ms-1 d-none d-sm-inline">Applied Positions</span> </a>
+                            </li>
+                            
+                            <li>
+                                <a href="{% url 'post-job' %}" class="nav-link py-2 px-0 align-middle">
+                                  <i class="fs-4 bi bi-plus-square"></i>
+                                  <span class="ms-1 d-none d-sm-inline">Post Job</span>
+                                </a>
+                            </li>
+                            <li>
+                              <a href="{% url 'job-search' %}" class="nav-link py-2 px-0 align-middle">
+                                <i class="fs-4 bi bi-search"></i>
+                                <span class="ms-1 d-none d-sm-inline">Search Jobs</span>
+                              </a>
+                            </li>
+
+                            <li>
+                              <a href="{% url 'manage-jobs' %}" class="nav-link py-2 px-0 align-middle">
+                                <i class="fs-4 bi-pen"></i>
+                                <span class="ms-1 d-none d-sm-inline">Manage Jobs</span>
+                              </a>
+                            </li>
+
+                          <li>
+                            <a href="{% url 'create-company' %}" class="nav-link py-2 px-0 align-middle">
+                              <i class="fs-4 bi-building"></i>
+                              <span class="ms-1 d-none d-sm-inline">Create Company</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                          <a href="{% url 'update-company' %}" class="nav-link py-2 px-0 align-middle">
+                            <i class="fs-4 bi-building"></i>
+                            <span class="ms-1 d-none d-sm-inline">Update Company</span>
+                          </a>
+                      </li>
+                        <li>
+                          <a href="{% url 'jobs' %}" class="nav-link py-2 px-0 align-middle">
+                            <i class="fs-4 bi-briefcase"></i>
+                            <span class="ms-1 d-none d-sm-inline">Jobs</span>
+                          </a>
+                      </li>
+                      
+                        <li>
+                          <a href="{% url 'startups' %}" class="nav-link py-2 px-0 align-middle">
+                            <i class="fs-4 bi-building"></i>
+                            <span class="ms-1 d-none d-sm-inline">Start Ups </span>
+                          </a>
+                      </li>
+                      
+                        <li>
+                          <a href="{% url 'internships' %}" class="nav-link py-2 px-0 align-middle">
+                            <i class="fs-4 bi-award"></i>
+                            <span class="ms-1 d-none d-sm-inline">Internships</span>
+                          </a>
+                      </li>
+                      
+                        {% comment %} <li>
+                          <a href="{% url 'update-company' %}" class="nav-link py-2 px-0 align-middle">
+                            <i class="fs-4 bi-building"></i>
+                            <span class="ms-1 d-none d-sm-inline">Update Company</span>
+                          </a>
+                      </li> {% endcomment %}
+                      
+                        </ul>
+                        <hr>
+                    </div>
+                </div>
+                <div class="col py-3">
+                    {% block content %}
+                    
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="w-100 py-4 flex-shrink-0 bg-primary">
+        <div class="container py-4">
+            <div class="row gy-4 gx-5">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="h1 text-white">Hirest</h5>
+                    <p class="small text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                    <p class="small text-white mb-0">&copy; Copyrights. All rights reserved.</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-white mb-3">Navigate to</h5>
+                    <ul class="list-unstyled text-muted text-white">
+                        <li><a class="text-white" href="{% url 'index' %}">Home</a></li>
+                        <li><a class="text-white" href="{% url 'my-profile' %}">My Profile</a></li>
+                        <li><a class="text-white" href="{% url 'my-applied' %}">Applied Positions</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-white mb-3">Explore</h5>
+                    <ul class="list-unstyled text-white">
+                        <li><a class="text-white" href="{% url 'jobs' %}">Job</a></li>
+                        <li><a class="text-white" href="{% url 'internships' %}">Internship</a></li>
+                        <li><a class="text-white" href="{% url 'startups' %}">Start Ups</a></li>
+                        <li><a class="text-white" href="{% url 'blog' %}">Blogs</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="text-white mb-3">Newsletter</h5>
+                    <p class="small text-white">Subscribe to our newsletter.</p>
+                    <form action="#">
+                        <div class="input-group mb-3">
+                            <input class="form-control" type="text" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <button class="btn btn-success" id="button-addon2" type="button"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script>
+        $(document).ready(function(){
+      $('.apply').click(function(e){
+          e.preventDefault();
+        var id = $(this).attr('data-target');
+        console.log("===applied-id===",id);
+        $.ajax({
+          url: "{% url 'apply' %}",
+          type: "GET",
+          data: {
+            'job_id': id,
+          },
+          success: function(response){
+            alert('Applied Successfully');  
+          }
+        })
+      });
+    });
+  </script>
+
+{% block js %}
+{% endblock %}
+
+</body>
+</html>
