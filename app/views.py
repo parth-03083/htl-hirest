@@ -19,6 +19,9 @@ def send_message(number,message):
     account_sid = settings.TWILIO_ACCOUNT_SID
     auth_token = settings.TWILIO_AUTH_TOKEN
 
+    print(account_sid,"===Account-ID===")
+    print(auth_token,"===AUTH-TOKEN===")
+
     client = Client(account_sid, auth_token)
     number = '+91' + str(number)
 
@@ -28,8 +31,6 @@ def send_message(number,message):
                               to=number)
 
     print(message.sid)
-
-
 
 
 def is_ajax(request):
@@ -384,7 +385,7 @@ def careerInfoViewRIASEC(request):
         print(careers)
         return render(request, 'careers.html', {'careers': careers})
     except:
-        return redirect('riasec-test')
+        return redirect('career-test')
     
 
 

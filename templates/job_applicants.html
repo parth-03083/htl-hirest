@@ -19,14 +19,14 @@
                             <div class="col-md-3">
                                 {{ a.user.user.first_name }} - {{ a.user.user.last_name }}
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-3">
                                 Skills:
                                 {% for i in a.user.skills.all %}
                                 <span class="btn btn-secondary disabled p-1"> {{i.name}} </span>
                                 {% endfor %}
                             </div>
 
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                                 <a href="{% url 'user-profile' a.user.user.id %}"
                                     class="btn btn-outline-primary btn-sm rounded-lg shadow-sm my-auto" target="_blank">    
                                         View Profile 
@@ -34,16 +34,16 @@
                             </div>
 
                             <div class="col-md-1">
-                                <a href="{% url 'approve-candidate' {{a.id}} %}" class="btn btn-outline-primary btn-sm rounded-lg shadow-sm my-auto" target="_blank" > Hire  </a>
+                                <a href="{% url 'approve-candidate' a.id %}" class="btn btn-outline-primary btn-sm rounded-lg shadow-sm my-auto" target="_blank" > Hire  </a>
                                 </a>
                             </div> 
 
-                            <div class="col-md-1">
-                                <a href="{% url ' interview-candidate' {{a.id}} %}" class="btn btn-outline-primary btn-sm rounded-lg shadow-sm my-auto" target="_blank" > Call  for Interview  </a>
+                            <div class="col-md-2">
+                                <a href="{% url 'interview-candidate' a.id %}" class="btn btn-outline-primary btn-sm rounded-lg shadow-sm my-auto" target="_blank" > Call  for Interview  </a>
                                 </a>
                             </div>
                             <div class="col-md-1">
-                                <a href="{% url ' interview-candidate'  {{a.id}} %}" class="btn btn-outline-primary btn-sm rounded-lg shadow-sm my-auto" target="_blank" > Reject  </a>
+                                <a href="{% url 'reject-candidate'  a.id %}" class="btn btn-outline-primary btn-sm rounded-lg shadow-sm my-auto" target="_blank" > Reject  </a>
                                 </a>
                             </div>
                             
