@@ -1,7 +1,7 @@
 <h1 align="center">
   <br>
-<img
-src="https://raw.githubusercontent.com/parth-03083/htl-hirest/main/static/assets/img/Hirest.png" alt="Hirest" width="200">
+<!-- <img -->
+<!-- src="https://raw.githubusercontent.com/parth-03083/htl-hirest/main/static/assets/img/Hirest.png" alt="Hirest" width="200"> -->
   <br>
   Hirest
   <br>
